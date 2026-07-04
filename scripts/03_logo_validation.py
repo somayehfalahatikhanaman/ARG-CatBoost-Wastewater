@@ -1,4 +1,4 @@
-
+    
 # FULL FEATURES LOGO EXPERIMENT
 cities = df['City'].unique()
 
@@ -115,4 +115,38 @@ for target_gene in gene_classes:
                 'True': y_test.values
             })
 
-            all_predictions.append(pred_df)
+            all_predictions.append(pd.DataFrame({
+                'Experiment': 'Full Features',
+                'City': df.loc[test_idx, 'City'].values,
+                'Target_Gene': target_gene,
+                'Model': model_name,
+                'Predicted': y_pred,
+                'True': y_test.values
+            }))
+
+# Save results
+results_df_full = pd.DataFrame(results_list)
+all_predictions_full = pd.concat(all_predictions, axis=0)
+
+results_df_full.to_csv("results/logo_full_results.csv", index=False)
+all_predictions_full.to_csv("results/logo_full_predictions.csv", index=False)
+
+model_summary_full = (
+    results_df_full
+    .groupby('Model')
+    .agg(
+        ROC_AUC_median=('ROC_AUC', 'median'),
+        ROC_AUC_mean=('ROC_AUC', 'mean'),
+        ROC_AUC_std=('ROC_AUC', 'std'),
+        F1_median=('F1', 'median'),
+        F1_mean=('F1', 'mean'),
+        F1_std=('F1', 'std')
+    )
+    .reset_index()
+    .sort_values('ROC_AUC_mean', ascending=False)
+)
+
+model_summary_full.to_csv("results/logo_full_model_summary.csv", index=False)
+
+print("LOGO validation completed.")
+print(model_summary_full)
