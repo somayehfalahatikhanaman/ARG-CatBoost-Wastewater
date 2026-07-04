@@ -28,7 +28,6 @@ scripts/
     02_catboost_logo_validation.py
     03_catboost_kfold_validation.py
     04_catboost_shap_analysis.py
-    05_nasa_power_api.py
 
 data/
     README.md
