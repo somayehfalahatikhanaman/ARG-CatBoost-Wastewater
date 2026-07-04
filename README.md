@@ -32,10 +32,6 @@ scripts/
 data/
     README.md
 
-results/
-    README.md
-
----
 
 ## Data Availability
 
