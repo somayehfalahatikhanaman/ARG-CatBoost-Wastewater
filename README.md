@@ -1,37 +1,67 @@
-# ARG-CatBoost-Wastewater
-# Predicting Antibiotic Resistance Genes Using CatBoost
+# CatBoost-ARG-Prediction
+
+## LOGO-Validated CatBoost Framework for Environmental and Omics-Based Prediction of Antibiotic Resistance Genes
 
 This repository accompanies the manuscript:
 
-"LOGO-Validated CatBoost Framework for Environmental and Omics-Based Prediction of Antibiotic Resistance Genes in Urban Wastewater"
+**LOGO-Validated CatBoost Framework for Environmental and Omics-Based Prediction of Antibiotic Resistance Genes in Urban Wastewater**
 
-## Repository Contents
+## Overview
+
+This repository contains the Python scripts used to reproduce the CatBoost-based machine learning framework developed for predicting antibiotic resistance gene (ARG) occurrence from integrated environmental and metagenomic data.
+
+The workflow includes:
+
+- Metagenomic ARG preprocessing
+- NASA POWER environmental data integration
+- CatBoost model development
+- Leave-One-Group-Out (LOGO) cross-validation
+- 5-fold cross-validation
+- SHAP explainability analysis
+
+---
+
+## Repository Structure
 
 scripts/
-Python scripts for preprocessing, model development, LOGO validation, K-fold cross-validation, and SHAP analysis.
+    01_catboost_preprocessing.py
+    02_catboost_logo_validation.py
+    03_catboost_kfold_validation.py
+    04_catboost_shap_analysis.py
+    05_nasa_power_api.py
 
 data/
-Processed feature matrices used for machine learning.
+    README.md
 
 results/
-Model outputs.
+    README.md
+
+---
+
+## Data Availability
+
+Raw metagenomic sequencing reads are publicly available through the European Nucleotide Archive (ENA).
+
+BioProject:
+
+**PRJEB68319**
+
+Processed feature matrices and supplementary datasets are available from:
+
+**Mendeley Data**
+
+https://doi.org/10.17632/7b929fysdb.1
+
+---
 
 ## Requirements
 
 Python 3.11
 
-Packages:
+Required packages are listed in **requirements.txt**.
 
-- pandas
-- numpy
-- scikit-learn
-- catboost
-- xgboost
-- shap
+---
 
-## Data
+## Citation
 
-Raw sequencing reads are publicly available from the European Nucleotide Archive (ENA) under BioProject PRJEB68319.
-
-Processed datasets are available in Mendeley Data:
-https://doi.org/10.17632/7b929fysdb.1
+If you use this repository, please cite the associated publication.
